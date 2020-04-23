@@ -44,3 +44,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/src/app/app.component.spec.ts
+/src/app/login/login.component.spec.ts
+/src/app/error/error.component.spec.ts
