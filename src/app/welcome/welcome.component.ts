@@ -16,6 +16,8 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+// ngOnInit is call instantly whenever login redirected to welcome with parameter this name parameter is sent by app-routing.module
+
     console.log(this.route.snapshot.params['name']);
     this.userName = this.route.snapshot.params['name'];
   }
