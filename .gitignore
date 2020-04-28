@@ -47,3 +47,7 @@ Thumbs.db
 /src/app/app.component.spec.ts
 /src/app/login/login.component.spec.ts
 /src/app/error/error.component.spec.ts
+/src/app/footer/footer.component.spec.ts
+/src/app/menu/menu.component.spec.ts
+/src/app/welcome/welcome.component.spec.ts
+/e2e/src/app.e2e-spec.ts
