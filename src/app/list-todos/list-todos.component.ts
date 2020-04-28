@@ -8,10 +8,11 @@ import {Component, OnInit} from '@angular/core';
 export class ListTodosComponent implements OnInit {
 
   todos = [
-    {id: 1, description: 'Learn dance'},
-    {id: 2, description: 'coding in angular'},
-    {id: 3, description: 'learning backed'},
-    {id: 4, description: 'doing full stack work'},
+    new Todo(1, 'Learn dance', false, new Date()),
+    new Todo(1, 'coding in angular', true, new Date()),
+    new Todo(1, 'learning backed', true, new Date()),
+    new Todo(1, 'doing full stack work', false, new Date()),
+    // {id: 2, description: 'coding in angular'},
   ];
 
   constructor() {
@@ -20,4 +21,13 @@ export class ListTodosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+}
+
+export class Todo {
+  constructor(public id: number,
+              public description: string,
+              public done: boolean,
+              public targetDate: Date
+  ) {
+  }
 }
