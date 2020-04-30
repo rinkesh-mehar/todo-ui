@@ -1,11 +1,15 @@
-<div *ngIf='invalidLogin'>
-  <small>{{errorMessage}}</small>
-</div>
+<h1>Login!</h1>
 
-<div>
-  Email <input [(ngModel)]="userName" autofocus name="userName" type="text"><br>
-  Password <input [(ngModel)]="password" name="password" type="password">
-  <button (click)="handleLogin()">Login</button>
-  <!--  username : {{userName}}-->
+<div class="container">
+  <div *ngIf='invalidLogin' class="alert alert-warning">
+    {{errorMessage}}
+  </div>
 
+  <div>
+    Email <input [(ngModel)]="userName" autofocus name="userName" type="text">
+    Password <input [(ngModel)]="password" name="password" type="password">
+    <button (click)=handleLogin() class="btn btn-success">Login</button>
+    <!--  username : {{userName}}-->
+
+  </div>
 </div>
