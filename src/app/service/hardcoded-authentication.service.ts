@@ -11,10 +11,10 @@ export class HardcodedAuthenticationService {
   }
 
   authenticate(userName, password) {
-    console.log('before ' + this.isUserLoggedIn());
+    // console.log('before ' + this.isUserLoggedIn());
     if (userName === 'rinkesh' && password === '123') {
       sessionStorage.setItem('authenticaterUser', userName);
-      console.log('after ' + this.isUserLoggedIn());
+      // console.log('after ' + this.isUserLoggedIn());
       return true;
     }
     return false;
@@ -25,6 +25,10 @@ export class HardcodedAuthenticationService {
     const user = sessionStorage.getItem('authenticaterUser');
 
     return !(user === null);
+  }
+
+  logout() {
+    sessionStorage.removeItem('authenticaterUser');
   }
 
 }

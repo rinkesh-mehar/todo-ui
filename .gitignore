@@ -52,3 +52,4 @@ Thumbs.db
 /src/app/welcome/welcome.component.spec.ts
 /e2e/src/app.e2e-spec.ts
 /src/app/service/hardcoded-authentication.service.spec.ts
+/src/app/logout/logout.component.spec.ts
