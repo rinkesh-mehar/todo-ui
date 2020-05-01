@@ -44,6 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
 /src/app/app.component.spec.ts
 /src/app/login/login.component.spec.ts
 /src/app/error/error.component.spec.ts
@@ -53,3 +54,4 @@ Thumbs.db
 /e2e/src/app.e2e-spec.ts
 /src/app/service/hardcoded-authentication.service.spec.ts
 /src/app/logout/logout.component.spec.ts
+/src/app/service/route-guard.service.spec.ts
