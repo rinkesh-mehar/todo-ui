@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {WelcomeDataService} from '../service/data/welcome-data.service';
 
 @Component({
   selector: 'app-welcome',
@@ -9,9 +10,10 @@ import {ActivatedRoute} from '@angular/router';
 export class WelcomeComponent implements OnInit {
 
   userName: any;
+  welcomeMessageFromService: string;
 
   // injecting dependency injection for activated route for user name
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private welcomeDataService: WelcomeDataService) {
 
   }
 
@@ -22,4 +24,30 @@ export class WelcomeComponent implements OnInit {
     this.userName = this.route.snapshot.params['name'];
   }
 
+  getWelcomeMessage() {
+    console.log(this.welcomeDataService.executeHelloWorldBeanService());
+
+    // TODO this is used to execute end point to subscribe the observable
+    this.welcomeDataService.executeHelloWorldBeanService().subscribe(
+      response => this.handleSuccessfulResponse(response),
+      error => this.handleErrorResponse(error)
+    );
+    // console.log('last line of welcome message');
+    console.log('called welcome message method');
+  }
+
+  handleSuccessfulResponse(response) {
+    this.welcomeMessageFromService = response.name;
+    console.log('in console handle succ', response.name);
+  }
+
+  handleErrorResponse(error) {
+    console.log(error);
+    console.log(error.error);
+    console.log(error.error.message);
+    this.welcomeMessageFromService = error.error.message;
+  }
+
 }
+
+
