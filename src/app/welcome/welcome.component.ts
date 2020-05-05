@@ -11,6 +11,8 @@ export class WelcomeComponent implements OnInit {
 
   userName: any;
   welcomeMessageFromService: string;
+  name: string;
+  message: string;
 
   // injecting dependency injection for activated route for user name
   constructor(private route: ActivatedRoute, private welcomeDataService: WelcomeDataService) {
@@ -48,6 +50,17 @@ export class WelcomeComponent implements OnInit {
     this.welcomeMessageFromService = error.error.message;
   }
 
+  getWelcomeMessageWithParameter() {
+    this.welcomeDataService.executeHelloWorldBeanWithParameter('rinkesh', 'nagpur').subscribe(
+      response => this.handleSuccessfulResponseOfParameter(response),
+      error => this.handleErrorResponse(error)
+    );
+  }
+
+  handleSuccessfulResponseOfParameter(response) {
+    this.name = response.name;
+    this.message = response.message;
+    console.log('in console handle name', response.name);
+    console.log('in console handle message', response.message);
+  }
 }
-
-

@@ -9,8 +9,20 @@
   <button (click)="getWelcomeMessage()" class="btn btn-success"> Get welcome message</button>
 </div>
 
+<div class="container">
+  Click here to get custom message with parameter
+  <button (click)="getWelcomeMessageWithParameter()" class="btn btn-success"> Get welcome message</button>
+</div>
+
 <div *ngIf="welcomeMessageFromService" class="container">
   <!--  TODO ngIf also work if null/nonNull or true/false-->
   <h2>Your customized message </h2>
   {{welcomeMessageFromService}}
+</div>
+
+<div *ngIf="name || message" class="container">
+  <!--  TODO ngIf also work if null/nonNull or true/false-->
+  <h2>Your customized message parameterized</h2>
+  {{name}}
+  {{message}}
 </div>
