@@ -56,3 +56,4 @@ Thumbs.db
 /src/app/logout/logout.component.spec.ts
 /src/app/service/route-guard.service.spec.ts
 /src/app/service/data/welcome-data.service.spec.ts
+/src/app/service/data/todo-data.service.spec.ts
