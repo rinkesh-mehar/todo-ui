@@ -8,6 +8,7 @@ import {TodoDataService} from '../service/data/todo-data.service';
 })
 export class ListTodosComponent implements OnInit {
 
+  message: string;
   todos = [];
   // new Todo(1, 'Learn dance', false, new Date()),
   // new Todo(1, 'coding in angular', true, new Date()),
@@ -20,6 +21,10 @@ export class ListTodosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.refreshTodos();
+  }
+
+  refreshTodos() {
     this.todoDataService.retrieveAllTodo('rinkesh').subscribe(
       response => {
         this.todos = response;
@@ -27,6 +32,17 @@ export class ListTodosComponent implements OnInit {
     );
   }
 
+  deleteTodo(id) {
+    console.log(`todo id is ${id}`);
+    this.todoDataService.deleteTodo('rinkesh', id).subscribe(
+      response => {
+        console.log(response);
+        this.message = `Delete of todo ${id} successful`;
+        this.refreshTodos();
+        // this.ngOnInit();
+      }
+    );
+  }
 }
 
 export class Todo {
