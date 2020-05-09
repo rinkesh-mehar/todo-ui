@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoDataService} from '../service/data/todo-data.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-todos',
@@ -17,7 +18,7 @@ export class ListTodosComponent implements OnInit {
   // {id: 2, description: 'coding in angular'},
   // ];
 
-  constructor(private todoDataService: TodoDataService) {
+  constructor(private todoDataService: TodoDataService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -42,6 +43,11 @@ export class ListTodosComponent implements OnInit {
         // this.ngOnInit();
       }
     );
+  }
+
+  updateTodo(id) {
+    console.log(`update ${id}`);
+    this.router.navigate(['todo', id]);
   }
 }
 
