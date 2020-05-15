@@ -58,3 +58,6 @@ Thumbs.db
 /src/app/service/data/welcome-data.service.spec.ts
 /src/app/service/data/todo-data.service.spec.ts
 /src/app/todo/todo.component.spec.ts
+/src/app/loader/loader.component.spec.ts
+/src/app/service/jwt.interceptor.spec.ts
+/src/app/service/loader.service.spec.ts
