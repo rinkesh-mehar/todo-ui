@@ -49,6 +49,10 @@ export class ListTodosComponent implements OnInit {
     console.log(`update ${id}`);
     this.router.navigate(['todo', id]);
   }
+
+  addTodo() {
+    this.router.navigate(['todo', -1]);
+  }
 }
 
 export class Todo {
