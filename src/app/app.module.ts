@@ -11,9 +11,10 @@ import {ListTodosComponent} from './list-todos/list-todos.component';
 import {MenuComponent} from './menu/menu.component';
 import {FooterComponent} from './footer/footer.component';
 import {LogoutComponent} from './logout/logout.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TodoComponent} from './todo/todo.component';
 import {LoaderComponent} from './loader/loader.component';
+import {HttpInterceptorBasicAuthService} from './service/http/http-interceptor-basic-auth.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,16 @@ import {LoaderComponent} from './loader/loader.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+
+  /**
+   * Multi true is enable us to configure more http interceptor as provider in future.
+   * if multi is false the subsequent Http Interceptor will override the current one
+   */
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorBasicAuthService, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

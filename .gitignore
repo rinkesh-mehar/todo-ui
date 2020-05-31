@@ -61,3 +61,4 @@ Thumbs.db
 /src/app/loader/loader.component.spec.ts
 /src/app/service/jwt.interceptor.spec.ts
 /src/app/service/loader.service.spec.ts
+/src/app/service/http/http-intercepter-basic-auth.service.spec.ts
