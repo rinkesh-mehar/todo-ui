@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {API_URL} from '../../app.constants';
 
 export class HelloWorldBean {
   constructor(public name: string) {
@@ -15,7 +16,7 @@ export class WelcomeDataService {
   }
 
   executeHelloWorldBeanService() {
-    return this.httpClient.get<HelloWorldBean>('http://localhost:8085/welcome');
+    return this.httpClient.get<HelloWorldBean>(`${API_URL}/welcome`);
     // console.log('Executed hello world bean service');
   }
 
@@ -35,7 +36,7 @@ export class WelcomeDataService {
     // });
 
     // TODO use tick to pass variable instead of append
-    return this.httpClient.get<HelloWorldBean>(`http://localhost:8085/get-bean/${message}-${name}`);
+    return this.httpClient.get<HelloWorldBean>(`${API_URL}/get-bean/${message}-${name}`);
     // /**
     //  * passing this headers of credential
     //  */

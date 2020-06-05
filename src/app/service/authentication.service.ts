@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import {API_URL} from '../app.constants';
 
 
 export const TOKEN = 'token';
@@ -31,7 +32,7 @@ export class AuthenticationService {
       Authorization: basicAuthHeaderString
     });
 
-    return this.httpClient.get<AuthenticationBean>(`http://localhost:8085/authenticate`,
+    return this.httpClient.get<AuthenticationBean>(`${API_URL}/authenticate`,
       /**
        * passing this headers of credential
        */
