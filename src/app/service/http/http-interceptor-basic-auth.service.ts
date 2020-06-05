@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {AuthenticationService} from '../authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpInterceptorBasicAuthService implements HttpInterceptor {
 
-  constructor() {
+  constructor(private authenticationService: AuthenticationService) {
   }
 
   /**
@@ -19,20 +20,31 @@ export class HttpInterceptorBasicAuthService implements HttpInterceptor {
    */
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const userName = 'rinkesh';
-    const password = '123';
-    const basicAuthHeaderString = 'Basic ' + window.btoa(userName + ':' + password);
+    /**
+     *     no need of username and password cause we are getting username and password from basic authentication
+     */
+      // const userName = 'rinkesh';
+      // const password = '123';
+      // const basicAuthHeaderString = 'Basic ' + window.btoa(userName + ':' + password);
+
+    const basicAuthHeaderString = this.authenticationService.getAuthenticatedToken();
+    const userName = this.authenticationService.getAuthenticatedUser();
 
     /**
      * setting the request for sending the request to the next handle
      * cloning it and overriding the specific property
      */
-    request = request.clone({
-        setHeaders: {
-          Authorization: basicAuthHeaderString
+    if (basicAuthHeaderString && userName) {
+      /**
+       * checking in IF is basicAuthHeader and username is valid or not
+       */
+      request = request.clone({
+          setHeaders: {
+            Authorization: basicAuthHeaderString
+          }
         }
-      }
-    );
+      );
+    }
     /**
      * handling the http request to the next interceptor that is backend
      */
