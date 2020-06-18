@@ -16,6 +16,31 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient) {
   }
 
+  executeJWTAuthenticationService(username, password) {
+    /**
+     * this commented part is for single http header authorization
+     * instead of this, Implemented Interceptor for all over the application
+     */
+
+    return this.httpClient.post<any>(`${API_URL}/authenticate`,
+      {
+        username,
+        password
+      })
+      /**
+       * Pipe - What should be done if request success or request fails
+       */
+      .pipe(
+        map(
+          data => {
+            sessionStorage.setItem(AUTHENTICATED_USER, username);
+            sessionStorage.setItem(TOKEN, `Bearer ${data.token}`);
+            return data;
+          }
+        )
+      );
+  }
+
   executeAuthenticationService(userName, password) {
     /**
      * this commented part is for single http header authorization

@@ -12,7 +12,7 @@ export class TodoDataService {
   }
 
   retrieveAllTodo(userName) {
-    return this.httpClient.get<Todo[]>(`${API_URL}/users/${userName}/todos`);
+    return this.httpClient.get<Todo[]>(`${API_URL}/jpa/users/${userName}/todos`);
   }
 
   retrieveTodo(userName, id) {

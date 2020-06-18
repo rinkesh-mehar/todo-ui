@@ -9,7 +9,8 @@
     Email <input [(ngModel)]="userName" autofocus name="userName" type="text">
     Password <input [(ngModel)]="password" name="password" type="password">
     <!--    <button (click)=handleLogin() class="btn btn-success">Login</button>-->
-    <button (click)=authenticateUser() class="btn btn-success">Login</button>
+    <!--    <button (click)=authenticateUser() class="btn btn-success">Login</button>-->
+    <button (click)=handleJWTAuthLogin() class="btn btn-success">Login</button>
     <!--  username : {{userName}}-->
 
   </div>

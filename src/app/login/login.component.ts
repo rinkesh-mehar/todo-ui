@@ -44,6 +44,31 @@ export class LoginComponent implements OnInit {
     console.log(this.password);
   }
 
+  handleJWTAuthLogin() {
+    /**
+     * we want to subscribe we dont want anything from return
+     */
+    this.authenticationService.executeJWTAuthenticationService(this.userName, this.password)
+      .subscribe(
+        data => {
+          /**
+           * If response is OK
+           */
+          console.log(`data is -> ${data} , userName is ${this.userName} , password is ${this.password}`);
+          this.invalidLogin = false;
+          this.router.navigate(['welcome', this.userName]);
+        },
+        /**
+         * If response is error
+         */
+        error => {
+          console.log(error);
+          this.invalidLogin = true;
+        }
+      );
+  }
+
+
   /**
    * This method is used to authenticate user from BACKEND
    */
